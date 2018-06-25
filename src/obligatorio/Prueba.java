@@ -5,10 +5,7 @@ import java.util.*;
 //pbrueba de cambio 2
 //prueba 3
 
-
-
-//prueba/
-//de nueva brunch
+//preuba de brunch
 public class Prueba extends Sistema  {
 
     public static Socio crearSocio(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
@@ -32,7 +29,7 @@ public class Prueba extends Sistema  {
     
         public static Animador crearAnimador(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
         Animador nuevoAnimador = new Animador(); //crea un nuevo objeto Socio
-        
+//prueba de brunch2
         System.out.print("Ingresar nombre del animador: ");
         nuevoAnimador.setNombre(pedirString());
         
