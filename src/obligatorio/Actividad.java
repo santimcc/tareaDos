@@ -16,6 +16,10 @@ public class Actividad {
         hayInscriptos = unHayinscriptos;
     }
     
+    public int compareTo(java.lang.Object o){
+        return this.getDia()-((Actividad)o).getDia();
+    }
+    
     //Constructor
     public Actividad() {
         this.setTipo("campo nombre vacio");

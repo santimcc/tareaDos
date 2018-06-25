@@ -45,6 +45,12 @@ private ArrayList <Actividad> listaActividades;
             listaActividades.add(unaActividad);
         }
         
+        public ArrayList<Actividad> ordenar() {
+            Collections.sort(getListaActividades());
+              return getListaActividades();
+
+        }
+
 
 }
 
