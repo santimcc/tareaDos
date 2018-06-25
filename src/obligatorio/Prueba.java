@@ -11,7 +11,7 @@ import java.util.*;
 //de nueva brunch
 public class Prueba extends Sistema  {
 	
-	//asdfasdf
+	
 
     public static Socio crearSocio(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
         Socio nuevoSocio = new Socio(); //crea un nuevo objeto Socio
