@@ -1,6 +1,6 @@
 package obligatorio;
 
-public class Actividad {
+public class Actividad implements Collections{
     private String tipo;
     private int horaComienzo;
     private int dia;
@@ -8,6 +8,8 @@ public class Actividad {
     private int capmax;
     private boolean hayInscriptos;
     private Animador animador;
+    private int tipoEntero; //tipo de actividad en entero, para ordenar la lista
+    
     
     public boolean getHayInscriptos(){
         return hayInscriptos;
@@ -16,8 +18,13 @@ public class Actividad {
         hayInscriptos = unHayinscriptos;
     }
     
-    public int compareTo(java.lang.Object o){
-        return this.getDia()-((Actividad)o).getDia();
+    @Override
+    public int compareTo(Actividad act){
+        int dif = this.getDia() - act.getDia();
+        if (dif == 0){
+            dif = this.getTipoEntero() - act.getTipoEntero();
+        }
+        return dif;
     }
     
     //Constructor
@@ -30,6 +37,15 @@ public class Actividad {
         this.setHayInscriptos(false);
         //Falta posible constructor de Animador
         
+    }
+    
+    
+    public int getTipoEntero() {
+        return tipoEntero;
+    }
+
+    public void setTipoEntero(int tipoEntero) {
+        this.tipoEntero = tipoEntero;
     }
     
     public String getTipo(){

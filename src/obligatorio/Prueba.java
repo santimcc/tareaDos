@@ -94,6 +94,8 @@ public class Prueba extends Sistema  {
         
         System.out.print("Tipo de actividad: ");    
         int opcion = DatoValido(1,7);        // lee el dato.
+        
+        nuevaActividad.setTipoEntero(opcion); //guarda el tipo de actividad en un entero
 
         switch (opcion) {           // segun opcion elegida le da su correspondiente nombre.            
             case 1:
