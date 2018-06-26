@@ -50,6 +50,13 @@ private ArrayList <Actividad> listaActividades;
               return getListaActividades();
 
         }
+        
+        public void mostrarLista(ArrayList lista) {
+            Iterator<Object> it = lista.iterator();
+             while(it.hasNext()){
+                 System.out.println(lista.next());
+             }
+        }
 
 
 }
