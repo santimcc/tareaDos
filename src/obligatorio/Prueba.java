@@ -309,7 +309,7 @@ public class Prueba extends Sistema  {
                     break;
                    
                 case 4:
-                    System.out.println("Eligio opcion 3: Crear una inscripcion");
+                    System.out.println("Eligio opcion 4: Crear una inscripcion");
                     if(! empresa.getListaActividades().isEmpty() && ! empresa.getListaSocios().isEmpty()){
                         Actividad activ = (Actividad) seleccionarDeLista(empresa.getListaActividades(), "Actividades disponibles: ");
                         Socio socio = (Socio) seleccionarDeLista(empresa.getListaSocios(), "Socios disponibles: ");
@@ -321,30 +321,38 @@ public class Prueba extends Sistema  {
                         }
                         else{
                             System.out.println("no hay mas cupos.");
+                           
                         }
                         
-                        
                     }
+                    else{
+                                System.out.println("No se puede crear una inscripcion sin socios y actividades");
+                                }
                     mostrarOpciones();
                     opcion = in.nextInt();
                     break;
             
                 case 5:
-                    System.out.println("EligiÃ³ opciÃ³n 4: Actualizar datos de socio");
-                    
-                    if (! empresa.getListaSocios().isEmpty()){
-                        Socio socio = (Socio) seleccionarDeLista(empresa.getListaSocios(), "Socios disponibles");
-                        modificarSocio(socio);
-                        System.out.println(socio);
+                    System.out.println("EligiÃ³ opciÃ³n 5: Mostrar Grafica");
+                    System.out.println("Ingrese un dia");
+                    int diaP = DatoValido(1,31);
+                    int [] tipos = new int [7];
+                    for (int i = 0; i < empresa.getListaActividades().size(); i++) {
+                        if(empresa.getListaActividades().get(i).getDia()==diaP){
+                            tipos[empresa.getListaActividades().get(i).getTipoEntero()]++;
+                        }
                     }
-                    else {
-                        System.out.println("no hay socios para modificar.");
-                    }
                     
-                    // a contunuacion se informa lo que se hizo y se pide que se vuelva a elegir una opcion del menu principal
-                    // para que no se cierre el programa y se puedan seguir haciendo cosas,
-                    // esto se pide hasta que se elige 6 y es ahi cuando termina el programa y se imprimen todos los datos existentes.
-                    System.out.println("Datos de socio actualizados, presione Enter para volver al menÃº principal"); 
+                    for (int i = 1; i < tipos.length; i++) {
+                        if(tipos[i]>0){
+                            System.out.print(i+" - ");
+                            for (int j = 1; j <=tipos[i] ; j++) {
+                                System.out.print("*");
+                                
+                            }
+                        }
+                    }
+
                     pedirString();
                     mostrarOpciones();
                     opcion = in.nextInt();
@@ -412,9 +420,35 @@ public class Prueba extends Sistema  {
                     
                 case 8:
                     System.out.println("opcion 8, actividades preferidas");
-                    int preferidas [] = new int [7];
-                    for (int i = 0; i < preferidas.length; i++) {
-                        for (int j = 0; j < empresa.getListaInscripciones().size(); j++) {
+                   
+                    int actPreferidas [] = new int [7];
+                    for (int i = 0; i < actPreferidas.length; i++) {
+                        actPreferidas[i] = 0;
+                        
+                    }
+                   
+                    for (int i = 0; i < empresa.getListaInscripciones().size(); i++) {
+                        actPreferidas[empresa.getListaInscripciones().get(i).getActividad().getTipoEntero()]++;
+                    }
+                    int max = actPreferidas[1];
+                    for (int i = 2; i < actPreferidas.length; i++) {
+                        
+                        if(max<actPreferidas[i]){
+                            max = actPreferidas[i];
+                        }
+                    
+                        
+                    }
+                    for (int i = 1; i <= actPreferidas.length; i++) {
+                        if(actPreferidas[i] == max){
+                            System.out.println("Actividades preferidas :" +i);
+                            System.out.println(actPreferidas[i]);
+                        }
+                        
+                    }
+                         
+                        
+                        /*for (int j = 0; j < empresa.getListaInscripciones().size(); j++) {
                             if(empresa.getListaInscripciones().getActividad().getTipoEntero() == i)
                             
                         
@@ -427,8 +461,8 @@ public class Prueba extends Sistema  {
                         if (empresa.getListaActividades().get(i).getTipoEntero() == i){
                             preferidas[i]++;
                         }
-                        
-                    }
+                        */
+                    
     
                     System.out.println("");
                     pedirString();
