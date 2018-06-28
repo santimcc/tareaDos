@@ -7,10 +7,20 @@ package obligatorio;
 
 public class Animador extends Socio {
     private int aniosXP;
-    
+    private boolean asignadoAct;
+
     public Animador(){
         this.setAniosXP(0);
+        this.setAsignadoAct(false);
     }
+    
+    public boolean getAsignadoAct() {
+        return asignadoAct;
+    }
+
+    public void setAsignadoAct(boolean asignadoAct) {
+        this.asignadoAct = asignadoAct;
+    }   
 
     public int getAniosXP() {
         return aniosXP;

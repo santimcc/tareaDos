@@ -1,6 +1,6 @@
 package obligatorio;
 
-public class Actividad implements Collections{
+public class Actividad implements Comparable<Actividad>{
     private String tipo;
     private int horaComienzo;
     private int dia;
@@ -101,7 +101,7 @@ public class Actividad implements Collections{
                 + this.getCapmax() 
                 + "\n Animador a cargo: "
                 + this.getAnimador()
-                + "\n -----------------------------------------";
+                + "\n -----------------------------------------\n";
                 
     }
     

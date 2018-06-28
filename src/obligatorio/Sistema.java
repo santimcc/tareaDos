@@ -47,17 +47,33 @@ private ArrayList <Actividad> listaActividades;
         
         public ArrayList<Actividad> ordenar() {
             Collections.sort(getListaActividades());
-              return getListaActividades();
-
+            return getListaActividades();
         }
         
-        public void mostrarLista(ArrayList lista) {
+         public void mostrarLista(ArrayList lista) {
             Iterator<Object> it = lista.iterator();
-             while(it.hasNext()){
-                 System.out.println(lista.next());
-             }
+            int i = 1;
+            while(it.hasNext()){
+                System.out.println (i + " - " + it.next());
+                i++;
+            }
+        
         }
-
+         
+        public void borrarInscripciones (Actividad actividad){
+            Iterator<Inscripcion> it = this.getListaInscripciones().iterator();
+            //Inscripcion i = it.next();
+            while (it.hasNext()){
+                if (it.next().getActividad() == (actividad)){
+                    System.out.println("entro");
+                    //System.out.println(it.next()); ////////////////////////////////////////////se cae aca
+                    System.out.println("medio");
+                    it.remove();
+                    System.out.println("salio");
+                }
+            }
+        }
+        
 
 }
 
