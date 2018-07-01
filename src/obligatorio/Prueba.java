@@ -46,7 +46,7 @@ public class Prueba extends Sistema  {
     }
     
     public static Animador crearAnimador(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
-        Animador nuevoAnimador = new Animador(); //crea un nuevo objeto Socio
+        Animador nuevoAnimador = new Animador(); //crea un nuevo objeto animador
         
         System.out.print("Ingresar nombre del animador: ");
         nuevoAnimador.setNombre(pedirString());
@@ -54,14 +54,14 @@ public class Prueba extends Sistema  {
         System.out.print("Ingresar documento: ");
         nuevoAnimador.setDocumento(pedirString());
 
-        System.out.print("Ingresar edad: ");
+        /*System.out.print("Ingresar edad: ");
         nuevoAnimador.setEdad(DatoValido(18,130));
-
+        
         System.out.print("Ingresar direcciÃ³n: ");
-        nuevoAnimador.setDireccion(pedirString());
+        nuevoAnimador.setDireccion(pedirString());*/
         
         System.out.println("Ingrese los anos de experiencia del animador");
-        nuevoAnimador.setAniosXP(DatoValido(1,60));
+        nuevoAnimador.setAniosXP(DatoValido(1,65));
         
         System.out.println("");
         return (nuevoAnimador); //devuelve un nuevo socio con sus datos correspondientes ya ingresados.

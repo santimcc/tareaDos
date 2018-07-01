@@ -30,5 +30,15 @@ public class Animador extends Socio {
         this.aniosXP = AniosXP;
     }
     
+    @Override
+    public String toString(){
+        return " Nombre: "
+                + this.getNombre() 
+                + "\n     Documento del animador: " 
+                + this.getDocumento() 
+                + "\n     años de Experiencia: " 
+                + this.getAniosXP() 
+                + "\n -----------------------------------------";
+    }
 
 }

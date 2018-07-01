@@ -91,16 +91,20 @@ public class Actividad implements Comparable<Actividad>{
     public String toString(){
         return " Tipo de actividad: " 
                 + this.getTipo() 
-                + "\n   hora de comienzo: " 
+                + "\n     hora de comienzo: " 
                 + this.getHoraComienzo() 
-                + "\n   día: " 
+                + "\n     día: " 
                 + this.getDia() 
-                + "\n   costo: $" 
+                + "\n     costo: $" 
                 + this.getCosto() 
-                + "\n   capacidad máxima: " 
+                + "\n     capacidad máxima: " 
                 + this.getCapmax() 
-                + "\n   Animador a cargo: "
-                + this.getAnimador()
+                + "\n     Animador a cargo: "
+                + this.getAnimador().getNombre()
+                + "\n         documento del animador: "
+                + this.getAnimador().getDocumento()
+                + "\n         años de experiencia del animador: "
+                + this.getAnimador().getAniosXP()
                 + "\n -----------------------------------------\n";
                 
     }
