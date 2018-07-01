@@ -256,7 +256,7 @@ public class Prueba extends Sistema  {
     public static Object seleccionarDeLista (ArrayList<?> lista, String mensaje){//el <?> significa que es de cualquier tipo
         System.out.println(mensaje);
         for (int i = 0 ; i < lista.size(); i++){
-            System.out.println((i + 1) + " -        " + lista.get(i));
+            System.out.println((i + 1) + " - " + lista.get(i));
         }
         System.out.print("seleccione una opcion: ");
         int seleccion = DatoValido(1, lista.size());
@@ -326,8 +326,8 @@ public class Prueba extends Sistema  {
             switch (opcion){
                 case 1: 
                     System.out.println("Eligio opcion 1: Agregar un socio");
-                    //empresa.agregarSocio(crearSocio());
-                    empresa.agregarSocio(testcrearSocio());
+                    empresa.agregarSocio(crearSocio());
+                    //empresa.agregarSocio(testcrearSocio());
                     
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
@@ -336,8 +336,8 @@ public class Prueba extends Sistema  {
      
                 case 2:
                     System.out.println("Eligio opcion 2: Agregar nuevo animador");
-                    //empresa.agregarAnimador(crearAnimador());
-                    empresa.agregarAnimador(testcrearAnimador());
+                    empresa.agregarAnimador(crearAnimador());
+                    //empresa.agregarAnimador(testcrearAnimador());
                     
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
@@ -347,8 +347,8 @@ public class Prueba extends Sistema  {
                 case 3:
                     System.out.println("Eligio opcion 3: Crear una actividad");
                   if(! empresa.getListaAnimadores().isEmpty()){
-                      //empresa.agregarActividad(crearActividad(empresa));
-                      empresa.agregarActividad(testCrearActividad(empresa));
+                      empresa.agregarActividad(crearActividad(empresa));
+                      //empresa.agregarActividad(testCrearActividad(empresa));
                       
                   }
                   else{
@@ -365,8 +365,8 @@ public class Prueba extends Sistema  {
                         Socio socio = (Socio) seleccionarDeLista(empresa.getListaSocios(), "Socios disponibles: ");
                         
                         if (activ.getCapmax() != 0){
-                            //empresa.agregarInscripcion(crearInscripcion(socio, activ));
-                            empresa.agregarInscripcion(testcrearInscripcion(socio, activ));
+                            empresa.agregarInscripcion(crearInscripcion(socio, activ));
+                            //empresa.agregarInscripcion(testcrearInscripcion(socio, activ));
 
                             activ.setCapmax(activ.getCapmax()-1);
                         }
@@ -385,24 +385,29 @@ public class Prueba extends Sistema  {
             
                 case 5:
                     System.out.println("Eligio opcion 5: Mostrar Grafica");
-                    System.out.print("Ingrese un dia: ");
-                    int diaP = DatoValido(1,31);
-                    int [] tipos = new int [7];
-                    for (int i = 0; i < empresa.getListaActividades().size(); i++) {
-                        if(empresa.getListaActividades().get(i).getDia()==diaP){
-                            tipos[empresa.getListaActividades().get(i).getTipoEntero()]++;
-                        }
-                    }
-                    
-                    for (int i = 1; i < tipos.length; i++) {
-                        if(tipos[i]>0){
-                            System.out.print("  " + i+" - ");
-                            for (int j = 1; j <= tipos[i] ; j++) {
-                                System.out.print("*");
-                                
+                    if(! empresa.getListaActividades().isEmpty()){
+                        System.out.print("Ingrese un dia: ");
+                        int diaP = DatoValido(1,31);
+                        int [] tipos = new int [7];
+                        for (int i = 0; i < empresa.getListaActividades().size(); i++) {
+                            if(empresa.getListaActividades().get(i).getDia()==diaP){
+                                tipos[empresa.getListaActividades().get(i).getTipoEntero()]++;
                             }
-                            System.out.println("");
                         }
+
+                        for (int i = 1; i < tipos.length; i++) {
+                            if(tipos[i]>0){
+                                System.out.print("  " + i +" - ");
+                                for (int j = 1; j <= tipos[i] ; j++) {
+                                    System.out.print("*");
+
+                                }
+                                System.out.println("");
+                            }
+                        }
+                    }//del if
+                    else{
+                        System.out.println("no hay actividades registradas");
                     }
 
                     pedirString();
@@ -452,55 +457,58 @@ public class Prueba extends Sistema  {
                     
                 case 8:
                     System.out.println("opcion 8, actividades preferidas");
-                   
-                    int actPreferidas [] = new int [7];  //creo array de 8 espacios, el espacio 0 no se usa
-                    /*for (int i = 0; i < actPreferidas.length; i++) {
-                    actPreferidas[i] = 0;  //lleno el array con ceros
-                    
-                    }
-                    System.out.println("array en cero:");
-                    for (int i = 0; i < actPreferidas.length; i++) {
-                        System.out.print(actPreferidas[i] + " - "); //imprimo el array lleno de ceros
-                        
-                    }
-                    System.out.println("");*/
-                    
-                    for (int i = 0; i < empresa.getListaInscripciones().size(); i++) {
-                        actPreferidas[empresa.getListaInscripciones().get(i).getActividad().getTipoEntero()]++; //lleno el array con cantidad de actividaes
-                    }
-                    
-                    int max = actPreferidas[1]; //defino el maximo como el primer valor para luego comparar.
-                    
-                    //System.out.println("max antes del for " + max);
-                    
-                    for (int i = 2; i < actPreferidas.length; i++) {  //busco el max en el array
-                        
-                        if(max<actPreferidas[i]){
-                            max = actPreferidas[i];
+                    if (! empresa.getListaActividades().isEmpty()){
+                        int actPreferidas [] = new int [7];  //creo array de 8 espacios, el espacio 0 no se usa
+                        /*for (int i = 0; i < actPreferidas.length; i++) {
+                        actPreferidas[i] = 0;  //lleno el array con ceros
+
+                        }
+                        System.out.println("array en cero:");
+                        for (int i = 0; i < actPreferidas.length; i++) {
+                            System.out.print(actPreferidas[i] + " - "); //imprimo el array lleno de ceros
+
+                        }
+                        System.out.println("");*/
+
+                        for (int i = 0; i < empresa.getListaInscripciones().size(); i++) {
+                            actPreferidas[empresa.getListaInscripciones().get(i).getActividad().getTipoEntero()]++; //lleno el array con cantidad de actividaes
+                        }
+
+                        int max = actPreferidas[1]; //defino el maximo como el primer valor para luego comparar.
+
+                        //System.out.println("max antes del for " + max);
+
+                        for (int i = 2; i < actPreferidas.length; i++) {  //busco el max en el array
+
+                            if(max<actPreferidas[i]){
+                                max = actPreferidas[i];
+                            }
+                        }
+
+                        //System.out.println("max DESPUES del for " + max);
+
+                        /*System.out.println("array lleno");
+                        for (int j = 0; j < actPreferidas.length; j++) {
+                        System.out.print(actPreferidas[j] + " - "); //imprimo el array
+
+                        }*/
+
+                        System.out.println("");
+
+
+                        for (int i = 1; i < actPreferidas.length; i++) {
+                            if(actPreferidas[i] == max){
+                                System.out.println("Actividades preferidas: " ); 
+                                tipoEnteroAString(i);                          //imprimo los valores del array que son iguales al maximo
+                                System.out.print(", con " + max + " inscripciones ");
+                                //System.out.println(actPreferidas[i]);
+                            }
+
                         }
                     }
-                    
-                    //System.out.println("max DESPUES del for " + max);
-                    
-                    /*System.out.println("array lleno");
-                    for (int j = 0; j < actPreferidas.length; j++) {
-                    System.out.print(actPreferidas[j] + " - "); //imprimo el array
-                    
-                    }*/
-                    
-                    System.out.println("");
-                        
-                    
-                    for (int i = 1; i < actPreferidas.length; i++) {
-                        if(actPreferidas[i] == max){
-                            System.out.println("Actividades preferidas: " ); 
-                            tipoEnteroAString(i);                          //imprimo los valores del array que son iguales al maximo
-                            System.out.print(", con " + max + " inscripciones ");
-                            //System.out.println(actPreferidas[i]);
-                        }
-                    
+                    else{
+                        System.out.println("no hay actividades registradas");
                     }
-                    
     
                     System.out.println("");
                     pedirString();
@@ -510,12 +518,15 @@ public class Prueba extends Sistema  {
                     
                 case 9:
                     System.out.println("EligiÃ³ opciÃ³n 9: animadores sin actividad");
-                    
-                    for (int i = 0; i < empresa.getListaAnimadores().size(); i++) {
-                        if (! empresa.getListaAnimadores().get(i).getAsignadoAct()){
-                            System.out.println(empresa.getListaAnimadores().get(i).getNombre() + " no esta asignado a ninguna actividad");
+                    if (! empresa.getListaAnimadores().isEmpty()){
+                        for (int i = 0; i < empresa.getListaAnimadores().size(); i++) {
+                            if (! empresa.getListaAnimadores().get(i).getAsignadoAct()){
+                                System.out.println(empresa.getListaAnimadores().get(i).getNombre() + " no esta asignado a ninguna actividad");
+                            }
                         }
-                        
+                    }
+                    else{
+                        System.out.println("no hay animadores registrados.");
                     }
 
                     System.out.println("");
