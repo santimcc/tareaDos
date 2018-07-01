@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package obligatorio;
 
 import java.util.*;
@@ -45,12 +40,12 @@ private ArrayList <Actividad> listaActividades;
             listaActividades.add(unaActividad);
         }
         
-        public ArrayList<Actividad> ordenar() {
+        public ArrayList<Actividad> ordenar() { //ordenar lista de actividades
             Collections.sort(this.getListaActividades());
             return getListaActividades();
         }
         
-        public void mostrarLista(ArrayList lista) {
+        public void mostrarLista(ArrayList lista) {//para imprimir una lista
             Iterator<Object> it = lista.iterator();
             int i = 1;
             while(it.hasNext()){
@@ -62,21 +57,20 @@ private ArrayList <Actividad> listaActividades;
          
         public void borrarInscripciones (Actividad actividad){
             Iterator<Inscripcion> it = this.getListaInscripciones().iterator();
-            //Inscripcion i = it.next();
-            for (int i = 0; i < getListaInscripciones().size(); i++) {  //recorrer la lista de inscripciones con for en vez de iterator
-                
-                if (listaInscripciones.get(i).getActividad() == actividad){ //misma sentencia que con iterartor abajo, si la actividad del
-                                                                            //elemento de las inscripciones es igual al que voy a borrar,
-                                                                            
-                    System.out.println(listaInscripciones.get(i).getTelefono());//entonces muestra el telefono.
-                }
-                
+            //recorrer la lista de inscripciones
+            for (int i = 0; i < getListaInscripciones().size(); i++) {                
+                if (listaInscripciones.get(i).getActividad() == actividad){
+                    //si es la actividad que busco
+                    //entonces muestra el nobmre del socio y su telefono.
+                    System.out.println("telefono del socio " 
+                            +listaInscripciones.get(i).getSocio().getNombre() 
+                            + " " 
+                            +listaInscripciones.get(i).getTelefono());    
+                }                
             }
             while (it.hasNext()){
-                if (it.next().getActividad() == (actividad)){
-                    
-                    it.remove();
-
+                if (it.next().getActividad() == (actividad)){                    
+                    it.remove(); //elimina la inscripcion
                 }
             }
         }

@@ -8,7 +8,7 @@ public class Actividad implements Comparable<Actividad>{
     private int capmax;
     private boolean hayInscriptos;
     private Animador animador;
-    private int tipoEntero; //tipo de actividad en entero, para ordenar la lista
+    private int tipoEntero;//tipo de actividad en entero, para ordenar la lista
     
     
     public boolean getHayInscriptos(){
@@ -20,8 +20,8 @@ public class Actividad implements Comparable<Actividad>{
     
     @Override
     public int compareTo(Actividad act){
-        int dif = this.getDia() - act.getDia();
-        if (dif == 0){
+        int dif = this.getDia() - act.getDia(); //ordena por dia
+        if (dif == 0){//si el dia es igual, ordena por tipo de actividad
             dif = this.getTipoEntero() - act.getTipoEntero();
         }
         return dif;
@@ -35,7 +35,6 @@ public class Actividad implements Comparable<Actividad>{
         this.setCosto(0);
         this.setCapmax(0);
         this.setHayInscriptos(false);
-        //Falta posible constructor de Animador
         
     }
     
@@ -97,7 +96,7 @@ public class Actividad implements Comparable<Actividad>{
                 + this.getDia() 
                 + "\n     costo: $" 
                 + this.getCosto() 
-                + "\n     capacidad máxima: " 
+                + "\n     cupos: " 
                 + this.getCapmax() 
                 + "\n     Animador a cargo: "
                 + this.getAnimador().getNombre()
