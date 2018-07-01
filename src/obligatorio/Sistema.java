@@ -26,7 +26,7 @@ private ArrayList <Actividad> listaActividades;
         public ArrayList<Animador> getListaAnimadores(){
             return listaAnimadores;
         }
-        public ArrayList<Inscripcion> getListaInscripciones(){
+        public ArrayList<Inscripcion> getListaInscripciones(){ 
             return listaInscripciones;
         }
         public ArrayList<Actividad> getListaActividades(){
@@ -46,11 +46,11 @@ private ArrayList <Actividad> listaActividades;
         }
         
         public ArrayList<Actividad> ordenar() {
-            Collections.sort(getListaActividades());
+            Collections.sort(this.getListaActividades());
             return getListaActividades();
         }
         
-         public void mostrarLista(ArrayList lista) {
+        public void mostrarLista(ArrayList lista) {
             Iterator<Object> it = lista.iterator();
             int i = 1;
             while(it.hasNext()){
@@ -63,13 +63,20 @@ private ArrayList <Actividad> listaActividades;
         public void borrarInscripciones (Actividad actividad){
             Iterator<Inscripcion> it = this.getListaInscripciones().iterator();
             //Inscripcion i = it.next();
+            for (int i = 0; i < getListaInscripciones().size(); i++) {  //recorrer la lista de inscripciones con for en vez de iterator
+                
+                if (listaInscripciones.get(i).getActividad() == actividad){ //misma sentencia que con iterartor abajo, si la actividad del
+                                                                            //elemento de las inscripciones es igual al que voy a borrar,
+                                                                            
+                    System.out.println(listaInscripciones.get(i).getTelefono());//entonces muestra el telefono.
+                }
+                
+            }
             while (it.hasNext()){
                 if (it.next().getActividad() == (actividad)){
-                    System.out.println("entro");
-                    //System.out.println(it.next()); ////////////////////////////////////////////se cae aca
-                    System.out.println("medio");
+                    
                     it.remove();
-                    System.out.println("salio");
+
                 }
             }
         }

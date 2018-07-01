@@ -33,7 +33,19 @@ public class Prueba extends Sistema  {
         return (nuevoSocio); //devuelve un nuevo socio con sus datos correspondientes ya ingresados.
     }  // fin metodo crear socio
     
-        public static Animador crearAnimador(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
+    public static Socio testcrearSocio(){
+        Socio ns = new Socio();
+        System.out.print("ingresar nombre de socio de prueba: ");
+        ns.setNombre(pedirString());
+        ns.setDocumento("doc prueba Socio");
+        ns.setEdad(66);
+        ns.setDireccion("direccion prueba socio");
+        System.out.println("socio de prueba creado");
+        System.out.println("");
+        return (ns);
+    }
+    
+    public static Animador crearAnimador(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
         Animador nuevoAnimador = new Animador(); //crea un nuevo objeto Socio
         
         System.out.print("Ingresar nombre del animador: ");
@@ -55,7 +67,17 @@ public class Prueba extends Sistema  {
         return (nuevoAnimador); //devuelve un nuevo socio con sus datos correspondientes ya ingresados.
     }  // fin metodo crear socio
     
-    
+    public static Animador testcrearAnimador(){
+        Animador nuevoAnimador = new Animador();
+        nuevoAnimador.setNombre("nombre animador prueba");
+        nuevoAnimador.setDocumento("documento prueba animador");
+        nuevoAnimador.setEdad(22);
+        nuevoAnimador.setDireccion("dir prueba animador");
+        nuevoAnimador.setAniosXP(3);
+        System.out.println("animador de prueba creado");
+        System.out.println("");
+        return(nuevoAnimador);
+    }
     
     public static Inscripcion crearInscripcion(Socio datosSocio, Actividad datosActividad){  
         datosActividad.setHayInscriptos(true);
@@ -75,26 +97,34 @@ public class Prueba extends Sistema  {
         return (nuevaInscripcion);        
     } //fin crear inscripcion
     
-    /*public static Inscripcion testcrearInscripcion(Socio datosSocio, Actividad datosActividad){
-    datosActividad.setHayInscriptos(true);
-    String tel = "telefono";
-    int hora = 7;
+    public static Inscripcion testcrearInscripcion(Socio datosSocio, Actividad datosActividad){
+        datosActividad.setHayInscriptos(true);
+        System.out.print("tel: ");
+        String tel = pedirString();
+        int hora = 7;
+        Inscripcion nuevaInscripcion = new Inscripcion(datosSocio, datosActividad, tel, hora);
+        System.out.println("inscripcion de prueba creada");
+        System.out.println("");
+        return(nuevaInscripcion);
     
-    }*/
+    }
     
     public static Actividad testCrearActividad(Sistema empresa){
         Actividad na = new Actividad();
         
         na.setDia(2);
-        na.setTipoEntero(2);
-        na.setTipo("2 teatro");
+        System.out.print("tipo actividad del 1 al 7: ");
+        na.setTipoEntero(DatoValido(1,7));
+        System.out.print("tipo en string: ");
+        na.setTipo(pedirString());
         na.setHoraComienzo(7);
         na.setCapmax(2);
         na.setCosto(0);
        // na.setHayInscriptos(true);
         na.setAnimador(empresa.getListaAnimadores().get(0));
         
-        
+        System.out.println("actividad de prueba creada");
+        System.out.println("");
         return(na);
     }
     
@@ -235,17 +265,21 @@ public class Prueba extends Sistema  {
     
     public static void mostrarOpciones(){ // metodo para desplegar el menu principal
         System.out.println(  ""
-                         + "\nâ•‘            MENÃš PRINCIPAL                             â•‘"
+                         + "\n            MENu PRINCIPAL                             "
                          + ""
-                         + "\nâ•‘Seleccione una tarea a realizar:                       â•‘"
-                         + "\nâ•‘                                                       â•‘"
-                         + "\nâ•‘1- ActualizaciÃ³n de datos de socio.                    â•‘"
-                         + "\nâ•‘2- Inscripciones a actividad.                          â•‘"
-                         + "\nâ•‘3- Listado de inscripciones en orden de hora.          â•‘"
-                         + "\nâ•‘4- Actualizacion de hora de Actividad.                 â•‘"
-                         + "\nâ•‘5- Mostrar datos.                                      â•‘"
-                         + "\nâ•‘6- Salir.                                              â•‘"
-                         + "asdf");
+                         + "\nSeleccione una tarea a realizar:                       "
+                         + "\n                                                       "
+                         + "\n  1- socio                   "
+                         + "\n  2- animador                          "
+                         + "\n  3- actividad          "
+                         + "\n  4- inscripcion.            "
+                         + "\n  5- asteriscos.                                      "
+                         + "\n  6- lista ordenada.                                              "
+                         + "\n  7- eliminar actividad"
+                         + "\n  8- actividades favoritas"
+                         + "\n  9- animadores sin actividad"
+                         + "\n  10- salir"
+                         + "");
     }
     
     /*-----------------------------------------------------------------------------------*/
@@ -257,30 +291,19 @@ public class Prueba extends Sistema  {
         Sistema empresa = new Sistema();
         //ArrayList<Animador>();
         
-        System.out.println("Ingrese datos del socio 1: ");
-        //Socio s1 = crearSocio();  //invoca al metodo crearSocio para hacer un nuevo objeto socio
-        Socio s1 = new Socio();
-        System.out.println("Ingrese datos socio 2: ");
-        //Socio s2 = crearSocio();
-        Socio s2 = new Socio();
         
-        System.out.println("Ingrese datos de Actividad: ");
-       // Actividad act = crearActividad();
-        Actividad act = new Actividad();
-        
-        Inscripcion ins1 = new Inscripcion(s1, act, "vacio", -1 );
-        Inscripcion ins2 = new Inscripcion(s2, act, "vacio", -1 );
         
         mostrarOpciones();
-        System.out.print("Ingresar opciÃ³n del menÃº: ");
+        System.out.print("Ingresar opcion: ");
         int opcion = in.nextInt();
         
         while (opcion != 10){ //pedir que se ingrese opcion del menu hasta que sea = a 6 y termine el programa
             switch (opcion){
                 case 1: 
                     System.out.println("Eligio opcion 1: Agregar un socio");
-                    empresa.agregarSocio(crearSocio());
-                 
+                    //empresa.agregarSocio(crearSocio());
+                    empresa.agregarSocio(testcrearSocio());
+                    
                     mostrarOpciones();
                     opcion = in.nextInt();
                     break;
@@ -288,7 +311,8 @@ public class Prueba extends Sistema  {
      
                 case 2:
                     System.out.println("Eligio opcion 2: Agregar nuevo animador");
-                    empresa.agregarAnimador(crearAnimador());
+                    //empresa.agregarAnimador(crearAnimador());
+                    empresa.agregarAnimador(testcrearAnimador());
                     
                     mostrarOpciones();
                     opcion = in.nextInt();
@@ -298,8 +322,9 @@ public class Prueba extends Sistema  {
                 case 3:
                     System.out.println("Eligio opcion 3: Crear una actividad");
                   if(! empresa.getListaAnimadores().isEmpty()){
-                      empresa.agregarActividad(crearActividad(empresa));
-                      //empresa.agregarActividad(testCrearActividad(empresa));
+                      //empresa.agregarActividad(crearActividad(empresa));
+                      empresa.agregarActividad(testCrearActividad(empresa));
+                      
                   }
                   else{
                       System.out.println("No se puede crear una actividad sin animadores");
@@ -315,7 +340,8 @@ public class Prueba extends Sistema  {
                         Socio socio = (Socio) seleccionarDeLista(empresa.getListaSocios(), "Socios disponibles: ");
                         
                         if (activ.getCapmax() != 0){
-                            empresa.agregarInscripcion(crearInscripcion(socio, activ));
+                            //empresa.agregarInscripcion(crearInscripcion(socio, activ));
+                            empresa.agregarInscripcion(testcrearInscripcion(socio, activ));
 
                             activ.setCapmax(activ.getCapmax()-1);
                         }
@@ -333,8 +359,8 @@ public class Prueba extends Sistema  {
                     break;
             
                 case 5:
-                    System.out.println("EligiÃ³ opciÃ³n 5: Mostrar Grafica");
-                    System.out.println("Ingrese un dia");
+                    System.out.println("Eligio opcion 5: Mostrar Grafica");
+                    System.out.print("Ingrese un dia: ");
                     int diaP = DatoValido(1,31);
                     int [] tipos = new int [7];
                     for (int i = 0; i < empresa.getListaActividades().size(); i++) {
@@ -345,11 +371,12 @@ public class Prueba extends Sistema  {
                     
                     for (int i = 1; i < tipos.length; i++) {
                         if(tipos[i]>0){
-                            System.out.print(i+" - ");
-                            for (int j = 1; j <=tipos[i] ; j++) {
+                            System.out.print("  " + i+" - ");
+                            for (int j = 1; j <= tipos[i] ; j++) {
                                 System.out.print("*");
                                 
                             }
+                            System.out.println("");
                         }
                     }
 
@@ -363,12 +390,13 @@ public class Prueba extends Sistema  {
                     System.out.println("Listado de actividades por fecha/tipo");
                                                           
                     if (! empresa.getListaActividades().isEmpty()){
+                        empresa.ordenar();
                         empresa.mostrarLista(empresa.getListaActividades());
                     }
                     else{
                         System.out.println("no hay actividades registradas");
                     }
-                    
+                
                     pedirString();
                     mostrarOpciones();
                     opcion = in.nextInt();
@@ -376,41 +404,17 @@ public class Prueba extends Sistema  {
                     
                 case 7:
                     System.out.println("Eligio opcion 7: Dar de baja una actividad"); ///////////////////   <------
-                    System.out.println("ACTIVIDADES:");
-                    System.out.println(empresa.getListaActividades());
-                    System.out.println("------------------------");
-                     System.out.println("INSCRIPCIONES:");
-                    System.out.println(empresa.getListaInscripciones());
-                    System.out.println("------------------------");
-                     System.out.println("SOCIOS:");
-                    System.out.println(empresa.getListaSocios());
-                    System.out.println("------------------------");
-                     System.out.println("ANIMADORES:");
-                    System.out.println(empresa.getListaAnimadores());
-                    System.out.println("------------------------");
                     
-                    
-                    Actividad aBorrar = (Actividad) seleccionarDeLista(empresa.getListaActividades(), "Elija actividad a borrar");//muestra la lista y se elije una actividad a borrar
-                    empresa.borrarInscripciones(aBorrar); //borra ins
-                    aBorrar.getAnimador().setAsignadoAct(false);
-                    
-                    empresa.getListaActividades().remove(aBorrar);
-                    
-                    System.out.println("DESPUES DE BORRAR \n");
-                    System.out.println("ACTIVIDADES:");
-                    System.out.println(empresa.getListaActividades());
-                    System.out.println("------------------------");
-                     System.out.println("INSCRIPCIONES:");
-                    System.out.println(empresa.getListaInscripciones());
-                    System.out.println("------------------------");
-                     System.out.println("SOCIOS:");
-                    System.out.println(empresa.getListaSocios());
-                    System.out.println("------------------------");
-                     System.out.println("ANIMADORES:");
-                    System.out.println(empresa.getListaAnimadores());
-                    System.out.println("------------------------");
-                    
-                    
+                    if (! empresa.getListaActividades().isEmpty()){
+                        Actividad aBorrar = (Actividad) seleccionarDeLista(empresa.getListaActividades(), "Elija actividad a borrar");//muestra la lista y se elije una actividad a borrar
+                        empresa.borrarInscripciones(aBorrar); //borra ins
+                        aBorrar.getAnimador().setAsignadoAct(false);
+
+                        empresa.getListaActividades().remove(aBorrar);
+                    }
+                    else{ 
+                        System.out.println("no hay actividades registradas.");
+                    }
                     System.out.println("");
                     System.out.println("se borro la actividad elegida y se desplegaron los telefonos de inscriptos");
                     pedirString();
@@ -471,7 +475,7 @@ public class Prueba extends Sistema  {
                     break;
                     
                 case 9:
-                    System.out.println("EligiÃ³ opciÃ³n 9: Mostrar todos los datos");
+                    System.out.println("EligiÃ³ opciÃ³n 9: animadores sin actividad");
                     
                     for (int i = 0; i < empresa.getListaAnimadores().size(); i++) {
                         if (! empresa.getListaAnimadores().get(i).getAsignadoAct()){
@@ -480,7 +484,7 @@ public class Prueba extends Sistema  {
                         
                     }
 
-                    System.out.println("Se desplegaron todos los datos existentes, presione Enter para volver al menÃº principal");
+                    System.out.println("");
                     pedirString();
                     mostrarOpciones();
                     opcion = in.nextInt();
