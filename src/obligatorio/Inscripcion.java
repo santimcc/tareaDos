@@ -49,15 +49,15 @@ public class Inscripcion {
     public String toString(){
         return ("\n Inscripción del socio: "
                 + this.socio.getNombre()
-                + "\n A la actividad: "
+                + "\n   A la actividad: "
                 + this.actividad.getTipo() 
-                + " El día " 
+                + "     El día " 
                 + this.actividad.getDia() 
-                + " Que comienza a las " 
+                + "     Que comienza a las " 
                 + this.actividad.getHoraComienzo()
-                + "\n Teléfono del inscripto: " 
+                + "\n   Teléfono del inscripto: " 
                 + this.getTelefono() 
-                + "\n Hora de pasar a buscarlo: " + this.getHoraRecoger() 
+                + "\n   Hora de pasar a buscarlo: " + this.getHoraRecoger() 
                 +  "\n -----------------------------------------");
     }
 }

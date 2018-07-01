@@ -47,11 +47,11 @@ public class Socio {
     public String toString(){
         return " Nombre: "
                 + this.getNombre() 
-                + "\n Documento: " 
+                + "\n   Documento: " 
                 + this.getDocumento() 
-                + "\n Edad: " 
+                + "\n   Edad: " 
                 + this.getEdad() 
-                + "\n Direccion: " + this.getDireccion() 
+                + "\n   Direccion: " + this.getDireccion() 
                 + "\n -----------------------------------------"; // 
     }    
 }
