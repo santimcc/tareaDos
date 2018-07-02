@@ -5,8 +5,7 @@ import java.util.*;
 public class Prueba extends Sistema  {	
     
 
-    public static Socio crearSocio(){ //crea un nuevo socio y pide los datos de
-                                      //cada socio cada vez que se invoca
+    public static Socio crearSocio(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
         Socio nuevoSocio = new Socio(); //crea un nuevo objeto Socio
         
         System.out.print("Ingresar nombre del socio: ");
@@ -18,17 +17,16 @@ public class Prueba extends Sistema  {
         System.out.print("Ingresar edad: ");
         nuevoSocio.setEdad(DatoValido(50,130));
 
-        System.out.print("Ingresar direcciÃ³n: ");
+        System.out.print("Ingresar dirección: ");
         nuevoSocio.setDireccion(pedirString());
 
         System.out.println("");
-        return (nuevoSocio); //devuelve un nuevo socio con sus datos
-                             //correspondientes ya ingresados.
+        return (nuevoSocio); //devuelve un nuevo socio con sus datos correspondientes ya ingresados.
     }  // fin metodo crear socio
     
-    //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
-    public static Animador crearAnimador(){ 
-        Animador nuevoAnimador = new Animador();//crea un nuevo objeto animador
+    
+    public static Animador crearAnimador(){ //crea un nuevo socio y pide los datos de cada socio cada vez que se invoca
+        Animador nuevoAnimador = new Animador(); //crea un nuevo objeto animador
         
         System.out.print("Ingresar nombre del animador: ");
         nuevoAnimador.setNombre(pedirString());
@@ -40,27 +38,22 @@ public class Prueba extends Sistema  {
         nuevoAnimador.setAniosXP(DatoValido(1,65));
         
         System.out.println("");
-        return (nuevoAnimador); //devuelve un nuevo socio con sus datos 
-                                //correspondientes ya ingresados.
+        return (nuevoAnimador); //devuelve un nuevo socio con sus datos correspondientes ya ingresados.
     }  // fin metodo crear socio
     
     
-    public static Inscripcion crearInscripcion(Socio datosSocio,
-                                                Actividad datosActividad){  
+    public static Inscripcion crearInscripcion(Socio datosSocio, Actividad datosActividad){  
         datosActividad.setHayInscriptos(true);
         
-        System.out.print("Ingresar telÃ©fono: ");
+        System.out.print("Ingresar teléfono: ");
         String tel = pedirString();
         System.out.print("Ingresar hora de pasar a buscar al socio: ");
         int hora = DatoValido(6,20);    
-        Inscripcion nuevaInscripcion = new Inscripcion(datosSocio,
-                                                datosActividad, tel, hora);
+        Inscripcion nuevaInscripcion = new Inscripcion(datosSocio, datosActividad, tel, hora);
         
         while (! nuevaInscripcion.VerificarHora()){
-            System.out.print("Hora de pasar a buscar al socio debe ser por lo "
-                    + "menos una hora antes del inicio de la actividad,"
-                    + " La actividad comienza a las " 
-                    + datosActividad.getHoraComienzo()
+            System.out.print("Hora de pasar a buscar al socio debe ser por lo menos una hora antes del inicio de la actividad,"
+                    + " La actividad comienza a las " + datosActividad.getHoraComienzo()
                     + "\n Ingrese hora nueva: ");
             nuevaInscripcion.setHoraRecoger(DatoValido(6,20));
         }        
@@ -68,20 +61,15 @@ public class Prueba extends Sistema  {
     } //fin crear inscripcion
     
     
-    public static Actividad crearActividad(Sistema empresa){  //metodo para 
-        //crear un nuevo objeto tipo actividad, pide los datos para llenar
-        //cada vez que se invoca
+    public static Actividad crearActividad(Sistema empresa){  //metodo para crear un nuevo objeto tipo actividad, pide los datos para llenar cada vez que se invoca
+        Actividad nuevaActividad = new Actividad(); // se crea el nuevo objeto
+       
         
-        Actividad nuevaActividad = new Actividad(); // se crea el nuevo objeto       
-        
-        //a continuacion se pediran los datos necesarios y su validacion 
-        //para que se rellene correctamente los datos de la actividad.
-        
-        // se pide ingreso del dia de la actividad
-        System.out.print("Ingresar dia de la actividad entre el 1 y el 31: "); 
+        //a continuacion se pediran los datos necesarios y su validacion para que se rellene correctamente los datos de la actividad.        
+        System.out.print("Ingresar dia de la actividad entre el 1 y el 31: "); // se pide ingreso del dia de la actividad
         nuevaActividad.setDia(DatoValido(1,31));
-        // despliega el menu de opciones de tipo de actividad.
-        System.out.println("Elegir tipo de actividad: "); 
+        
+        System.out.println("Elegir tipo de actividad: "); // despliega el menu de opciones de tipo de actividad.
         System.out.println("    1- Teatro");
         System.out.println("    2- Cine");
         System.out.println("    3- Viaje");
@@ -93,10 +81,9 @@ public class Prueba extends Sistema  {
         System.out.print("Tipo de actividad: ");    
         int opcion = DatoValido(1,7);        // lee el dato.
         
-        nuevaActividad.setTipoEntero(opcion); //guarda el tipo de actividad en 
-                                              //un entero
+        nuevaActividad.setTipoEntero(opcion); //guarda el tipo de actividad en un entero
 
-        switch (opcion) {//segun opcion elegida le da su correspondiente nombre.            
+        switch (opcion) {           // segun opcion elegida le da su correspondiente nombre.            
             case 1:
                 nuevaActividad.setTipo("1 Teatro");
                 System.out.println("Eligió teatro como tipo de actividad.");
@@ -111,13 +98,11 @@ public class Prueba extends Sistema  {
                 break;
             case 4:
                 nuevaActividad.setTipo("4 Paseo local");
-                System.out.println("Eligió paseo local como tipo "
-                        + "de actividad.");
+                System.out.println("Eligió paseo local como tipo de actividad.");
                 break;
             case 5:
                 nuevaActividad.setTipo("5 Paseo interdepartamental");
-                System.out.println("Eligió paseo interdepartamental "
-                        + "como tipo de actividad.");
+                System.out.println("Eligió paseo interdepartamental como tipo de actividad.");
                 break;
             case 6:
                 nuevaActividad.setTipo("6 Caminata");
@@ -130,30 +115,24 @@ public class Prueba extends Sistema  {
         }//fin switch elegir tipo de actividad
   
         
-        System.out.print("Ingresar hora de comienzo de la actividad entre"
-                + " las 7 y las 21: ");   //pide hora de comienzo de actividad
-                                          //y verifico que sea correcta
+        System.out.print("Ingresar hora de comienzo de la actividad entre las 7 y las 21: ");   //pide hora de comienzo de actividad y verifico que sea correcta
         nuevaActividad.setHoraComienzo(DatoValido(7,21));        
         
         
-        System.out.print("Ingresar capacidad máxima: ");  // capacidad
+        System.out.print("Ingresar capacidad máxima: ");  // pido ingresar capacidad de la actividad
         nuevaActividad.setCapmax(DatoValido(1,Integer.MAX_VALUE));
         
-        System.out.print("Ingresar costo de la actividad: $"); //costo
+        System.out.print("Ingresar costo de la actividad: $"); //pido ingresar costo
         nuevaActividad.setCosto(DatoValido(0,Integer.MAX_VALUE));
         
-        nuevaActividad.setAnimador((Animador)
-                seleccionarDeLista(empresa.getListaAnimadores(),
-                        "elija un animador:"));
+        nuevaActividad.setAnimador((Animador) seleccionarDeLista(empresa.getListaAnimadores(), "elija un animador:"));
         nuevaActividad.getAnimador().setAsignadoAct(true);
         
-        return (nuevaActividad);  //devuelve un Nuevo objeto de tipo Actividad 
-                                  //con datos ingresados. 
+        return (nuevaActividad);  //devuelve un Nuevo objeto de tipo Actividad con datos ingresados. 
         
     }//fin metodo de crear nueva actividad
     
-    public static int DatoValido(int min, int max){  //MÃ©todo que pide un dato
-                            //y lo verifica entre dos valores a seleccionar.
+    public static int DatoValido(int min, int max){  //MÃ©todo que pide un dato y lo verifica entre dos valores a seleccionar.
         Scanner in = new Scanner (System.in);
         int num = 0 ;
         boolean ok = false;
@@ -162,8 +141,7 @@ public class Prueba extends Sistema  {
                 num = in.nextInt();
                 while (! ((num >= min) && (num <= max))){ 
                     System.out.print("Dato ingresado no es correcto,"
-                            + "\nIngrese un valor entre " + min + " y " + max +
-                            ": ");
+                            + "\nIngrese un valor entre " + min + " y " + max + ": ");
                     num = in.nextInt();
                 }
               ok = true;
@@ -178,32 +156,14 @@ public class Prueba extends Sistema  {
     return (num); 
     }   
 	
-    public static String pedirString(){ //MÃ©todo para pedir String y no crear
-                                    //Scanner en cada mÃ©todo
+    public static String pedirString(){ //MÃ©todo para pedir String y no crear Scanner en cada mÃ©todo
         Scanner in = new Scanner (System.in);
         String dato = in.nextLine();
         return dato;
     }
-  
-    public static void modificarSocio(Socio socioMod){ //MÃ©todo para modificar 
-                                                //direcciÃ³n y edad de un socio
-        
-        System.out.println("Se modificarÃ¡n los datos del socio "
-                + socioMod.getNombre());
-        System.out.println("DirecciÃ³n actual: " + socioMod.getDireccion());
-        System.out.print("Ingrese nueva direcciÃ³n del socio: ");
-        socioMod.setDireccion(pedirString());  //se modifica la direccion del
-                                                //socio indicado
-        
-        System.out.println("Edad actual: " + socioMod.getEdad());
-        System.out.print("Ingrese nueva edad del socio ");        
-        socioMod.setEdad(DatoValido(50,130)); //se modifica la edad del socio
-    }  // fin metodo de modificar socio
-        
-    
+
     //metodo para seleccionar un objeto de una lista cualquiera:
-    public static Object seleccionarDeLista(ArrayList<?>lista, String mensaje){
-    //el <?> significa que es de cualquier tipo
+    public static Object seleccionarDeLista (ArrayList<?> lista, String mensaje){//el <?> significa que es de cualquier tipo
         System.out.println(mensaje);
         for (int i = 0 ; i < lista.size(); i++){
             System.out.println((i + 1) + " - " + lista.get(i));
@@ -213,8 +173,7 @@ public class Prueba extends Sistema  {
         return lista.get(seleccion - 1);
     }
     
-    public static void tipoEnteroAString(int tipo){ //Para imprimir el tipo de 
-                                                //actividad favorita en string
+    public static void tipoEnteroAString(int tipo){ //Para imprimir el tipo de actividad favorita en string
         switch (tipo) {           
             case 1:
                 System.out.print("tipo 1: Teatro");
@@ -277,6 +236,8 @@ public class Prueba extends Sistema  {
                     System.out.println("Eligio opcion 1: Agregar un socio");
                     empresa.agregarSocio(crearSocio());
                     
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break;
@@ -286,6 +247,8 @@ public class Prueba extends Sistema  {
                     System.out.println("Eligio opcion 2: Agregar nuevo animador");
                     empresa.agregarAnimador(crearAnimador());
                     
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break; 
@@ -300,7 +263,9 @@ public class Prueba extends Sistema  {
                     else{
                         System.out.println("No se puede crear una actividad sin animadores");
                     }
-                  
+                    
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break;
@@ -323,6 +288,8 @@ public class Prueba extends Sistema  {
                         System.out.println("No se puede crear una inscripcion sin socios y actividades");
                     }
                     
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break;
@@ -364,8 +331,9 @@ public class Prueba extends Sistema  {
                     else{
                         System.out.println("no hay actividades registradas");
                     }
-
-                    pedirString();
+                    
+                    System.out.println("Enter para continuar");
+                    pedirString(); 
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                    
@@ -381,7 +349,9 @@ public class Prueba extends Sistema  {
                     else{
                         System.out.println("no hay actividades registradas");
                     }
-                
+                    
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break;
@@ -403,7 +373,8 @@ public class Prueba extends Sistema  {
                         System.out.println("no hay actividades registradas.");
                     }
                     
-                    
+                    System.out.println("Enter para continuar");
+                    pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
                     break;
@@ -447,7 +418,7 @@ public class Prueba extends Sistema  {
                         System.out.println("no hay actividades registradas");
                     }
     
-                    System.out.println("");
+                    System.out.println("Enter para continuar");
                     pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
@@ -472,7 +443,7 @@ public class Prueba extends Sistema  {
                         System.out.println("no hay animadores registrados.");
                     }
 
-                    System.out.println("");
+                    System.out.println("Enter para continuar");
                     pedirString();
                     mostrarOpciones();
                     opcion = DatoValido(1,10);
@@ -480,7 +451,7 @@ public class Prueba extends Sistema  {
          
             }//SWITCH
        }//WHILE del menu
-        System.out.println("EligiÃ³ opciÃ³n 10: Salir del programa");
+        System.out.println("Eligió opción 10: Salir del programa");
         System.out.println("");
         System.out.println("Autores: Marco Liguori y Santiago Mc Clew");
     }//clase MAIN    

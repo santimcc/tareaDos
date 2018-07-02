@@ -1,6 +1,6 @@
 package obligatorio;
 
-public class Socio {
+public class Socio  {
     private String nombre;
     private String documento;
     private int edad;
@@ -14,7 +14,7 @@ public class Socio {
         this.setDocumento("Campo documento: vacio");
     }
 	 
- 
+    
   
     public String getNombre(){
         return nombre;

@@ -45,6 +45,11 @@ private ArrayList <Actividad> listaActividades;
             return getListaActividades();
         }
         
+        public ArrayList<Inscripcion> ordenarInscripciones(){
+            Collections.sort(this.getListaInscripciones());
+            return getListaInscripciones();
+        }
+        
         public void mostrarLista(ArrayList lista) {//para imprimir una lista
             Iterator<Object> it = lista.iterator();
             int i = 1;
@@ -56,6 +61,7 @@ private ArrayList <Actividad> listaActividades;
         }
          
         public void borrarInscripciones (Actividad actividad){
+            ordenarInscripciones();
             Iterator<Inscripcion> it = this.getListaInscripciones().iterator();
             //recorrer la lista de inscripciones
             for (int i = 0; i < getListaInscripciones().size(); i++) {                

@@ -1,6 +1,6 @@
 package obligatorio;
 
-public class Inscripcion {
+public class Inscripcion implements Comparable<Inscripcion> {
     private Socio socio;
     private Actividad actividad;
     private String telefono;
@@ -18,6 +18,10 @@ public class Inscripcion {
         return (((actividad.getHoraComienzo()) -1) >= (horaRecoger));        
     } 
    
+    @Override
+    public int compareTo(Inscripcion ins){
+        return (this.getSocio().getNombre().compareTo(ins.getSocio().getNombre()));
+    }
     
     public Socio getSocio(){
         return socio;
